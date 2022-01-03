@@ -1,0 +1,940 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <a href="https://docs.google.com/uc?id=0B0jH18Lft7ypSmRjdWg1c082Y2M" download id="download" hidden></a>
+    <body>
+    Noise Gen
+    <image id = "image0">
+    <image id = "image1">
+    <image id = "image2">
+    <image id = "image3">
+    <image id = "image4">
+    <image id = "image5">
+    <image id = "image6">
+    <image id = "image7">
+    <image id = "image8">
+    <image id = "image9">
+    <image id = "image10">
+    <image id = "image11">
+    <image id = "image12">
+    <image id = "image13">
+    <image id = "image14">
+    <image id = "image15">
+    <image id = "image16">
+    <image id = "image17">
+    <image id = "image18">
+    <image id = "image19">
+    <image id = "image20">
+    <image id = "image21">
+    <image id = "image22">
+    <image id = "image23">
+    <image id = "image24">
+    <image id = "image25">
+    <image id = "image26">
+    <image id = "image27">
+    <image id = "image28">
+    <image id = "image29">
+    <image id = "image30">
+    <image id = "image31">
+    <image id = "image32">
+    <image id = "image33">
+    <image id = "image34">
+    <image id = "image35">
+    <image id = "image36">
+    <image id = "image37">
+    <image id = "image38">
+    <image id = "image39">
+    <image id = "image40">
+    <image id = "image41">
+    <image id = "image42">
+    <image id = "image43">
+    <image id = "image44">
+    <image id = "image45">
+    <image id = "image46">
+    <image id = "image47">
+    <image id = "image48">
+    <image id = "image49">
+    <image id = "image50">
+    <image id = "image51">
+    <image id = "image52">
+    <image id = "image53">
+    <image id = "image54">
+    <image id = "image55">
+    <image id = "image56">
+    <image id = "image57">
+    <image id = "image58">
+    <image id = "image59">
+    <image id = "image60">
+    <image id = "image61">
+    <image id = "image62">
+    <image id = "image63">
+    <image id = "image64">
+    <image id = "image65">
+    <image id = "image66">
+    <image id = "image67">
+    <image id = "image68">
+    <image id = "image69">
+    <image id = "image70">
+    <image id = "image71">
+    <image id = "image72">
+    <image id = "image73">
+    <image id = "image74">
+    <image id = "image75">
+    <image id = "image76">
+    <image id = "image77">
+    <image id = "image78">
+    <image id = "image79"> 
+    <image id = "image80">
+    <image id = "image81">
+    <image id = "image82">
+    <image id = "image83">
+    <image id = "image84">
+    <image id = "image85">
+    <image id = "image86">
+    <image id = "image87">
+    <image id = "image88">
+    <image id = "image89">
+    <image id = "image90">
+    <image id = "image91">
+    <image id = "image92">
+    <image id = "image93">
+    <image id = "image94">
+    <image id = "image95">
+    <image id = "image96">
+    <image id = "image97">
+    <image id = "image98">
+    <image id = "image99">   
+    </body>
+    <script id="workerSource" <!-- -->type = "javascript/worker" >
+            // worker constants
+            0; // otherwise VSCode complains...
+        console.log("start");
+        const MEASUREMENT_TIME_IN_MS = 30000;
+        const SAMPLING_PERIOD_IN_MS = 5; 
+
+        const ARRAY_SIZE = 1000;
+        
+        var measurement_index, busySpins = 0;
+        var nextMeasurementStartTime = performance.now(), finishTime = performance.now(), currentTime;
+        
+        finishTime += MEASUREMENT_TIME_IN_MS;
+        currentTime = performance.now();
+        /*function noise(){
+            document.getElementById('download').click();
+            //setTimeout(window.stop(),1000);
+        }
+        //document.getElementById('download').click();
+        var open = window.open('https://docs.google.com/uc?id=0B0jH18Lft7ypSmRjdWg1c082Y2M');
+      
+      setTimeout(open.close(),10000);*/
+      function reqListener () {
+  console.log(this.responseText);
+}
+
+let image0 = document.getElementById('image0');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image0.src= data.message
+
+}).catch(err=>console.log(err));
+let image1 = document.getElementById('image1');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image1.src= data.message
+
+}).catch(err=>console.log(err));
+let image2 = document.getElementById('image2');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image2.src= data.message
+
+}).catch(err=>console.log(err));
+let image3 = document.getElementById('image3');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image3.src= data.message
+
+}).catch(err=>console.log(err));
+let image4 = document.getElementById('image4');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image4.src= data.message
+
+}).catch(err=>console.log(err));
+let image5 = document.getElementById('image5');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image5.src= data.message
+
+}).catch(err=>console.log(err));
+let image6 = document.getElementById('image6');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image6.src= data.message
+
+}).catch(err=>console.log(err));
+let image7 = document.getElementById('image7');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image7.src= data.message
+
+}).catch(err=>console.log(err));
+let image8 = document.getElementById('image8');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image8.src= data.message
+
+}).catch(err=>console.log(err));
+let image9 = document.getElementById('image9');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image9.src= data.message
+
+}).catch(err=>console.log(err));
+let image10 = document.getElementById('image10');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image10.src= data.message
+
+}).catch(err=>console.log(err));
+let image11 = document.getElementById('image11');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image11.src= data.message
+
+}).catch(err=>console.log(err));
+let image12 = document.getElementById('image12');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image12.src= data.message
+
+}).catch(err=>console.log(err));
+let image13 = document.getElementById('image13');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image13.src= data.message
+
+}).catch(err=>console.log(err));
+let image14 = document.getElementById('image14');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image14.src= data.message
+
+}).catch(err=>console.log(err));
+let image15 = document.getElementById('image15');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image15.src= data.message
+
+}).catch(err=>console.log(err));
+let image16 = document.getElementById('image16');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image16.src= data.message
+
+}).catch(err=>console.log(err));
+let image17 = document.getElementById('image17');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image17.src= data.message
+
+}).catch(err=>console.log(err));
+let image18 = document.getElementById('image18');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image18.src= data.message
+
+}).catch(err=>console.log(err));
+let image19 = document.getElementById('image19');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image19.src= data.message
+
+}).catch(err=>console.log(err));
+let image20 = document.getElementById('image20');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image20.src= data.message
+
+}).catch(err=>console.log(err));
+let image21 = document.getElementById('image21');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image21.src= data.message
+
+}).catch(err=>console.log(err));
+let image22 = document.getElementById('image22');
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image22.src= data.message
+
+}).catch(err=>console.log(err));
+let image23 = document.getElementById('image23');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image23.src= data.message
+
+}).catch(err=>console.log(err));
+let image24 = document.getElementById('image24');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image24.src= data.message
+
+}).catch(err=>console.log(err));
+let image25 = document.getElementById('image25');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image25.src= data.message
+
+}).catch(err=>console.log(err));
+let image26 = document.getElementById('image26');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image26.src= data.message
+
+}).catch(err=>console.log(err));
+let image27 = document.getElementById('image27');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image27.src= data.message
+
+}).catch(err=>console.log(err));
+let image28 = document.getElementById('image28');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image28.src= data.message
+
+}).catch(err=>console.log(err));
+let image29 = document.getElementById('image29');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image29.src= data.message
+
+}).catch(err=>console.log(err));
+let image30 = document.getElementById('image30');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image30.src= data.message
+
+}).catch(err=>console.log(err));
+let image31 = document.getElementById('image31');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image31.src= data.message
+
+}).catch(err=>console.log(err));
+let image32 = document.getElementById('image32');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image32.src= data.message
+
+}).catch(err=>console.log(err));
+let image33 = document.getElementById('image33');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image33.src= data.message
+
+}).catch(err=>console.log(err));
+let image34 = document.getElementById('image34');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image34.src= data.message
+
+}).catch(err=>console.log(err));
+let image35 = document.getElementById('image35');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image35.src= data.message
+
+}).catch(err=>console.log(err));
+let image36 = document.getElementById('image36');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image36.src= data.message
+
+}).catch(err=>console.log(err));
+let image37 = document.getElementById('image37');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image37.src= data.message
+
+}).catch(err=>console.log(err));
+let image38 = document.getElementById('image38');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image38.src= data.message
+
+}).catch(err=>console.log(err));
+let image39 = document.getElementById('image39');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image39.src= data.message
+
+}).catch(err=>console.log(err));
+let image40 = document.getElementById('image40');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image40.src= data.message
+
+}).catch(err=>console.log(err));
+let image41 = document.getElementById('image41');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image41.src= data.message
+
+}).catch(err=>console.log(err));
+let image42 = document.getElementById('image42');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image42.src= data.message
+
+}).catch(err=>console.log(err));
+let image43 = document.getElementById('image43');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image43.src= data.message
+
+}).catch(err=>console.log(err));
+let image44 = document.getElementById('image44');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image44.src= data.message
+
+}).catch(err=>console.log(err));
+let image45 = document.getElementById('image45');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image45.src= data.message
+
+}).catch(err=>console.log(err));
+let image46 = document.getElementById('image46');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image46.src= data.message
+
+}).catch(err=>console.log(err));
+let image47 = document.getElementById('image47');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image47.src= data.message
+
+}).catch(err=>console.log(err));
+let image48 = document.getElementById('image48');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image48.src= data.message
+
+}).catch(err=>console.log(err));
+let image49 = document.getElementById('image49');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image49.src= data.message
+
+}).catch(err=>console.log(err));
+let image50 = document.getElementById('image50');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image50.src= data.message
+
+}).catch(err=>console.log(err));
+let image51 = document.getElementById('image51');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image51.src= data.message
+
+}).catch(err=>console.log(err));
+let image52 = document.getElementById('image52');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image52.src= data.message
+
+}).catch(err=>console.log(err));
+let image53 = document.getElementById('image53');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image53.src= data.message
+
+}).catch(err=>console.log(err));
+let image54 = document.getElementById('image54');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image54.src= data.message
+
+}).catch(err=>console.log(err));
+let image55 = document.getElementById('image55');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image55.src= data.message
+
+}).catch(err=>console.log(err));
+let image56 = document.getElementById('image56');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image56.src= data.message
+
+}).catch(err=>console.log(err));
+let image57 = document.getElementById('image57');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image57.src= data.message
+
+}).catch(err=>console.log(err));
+let image58 = document.getElementById('image58');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image58.src= data.message
+
+}).catch(err=>console.log(err));
+let image59 = document.getElementById('image59');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image59.src= data.message
+
+}).catch(err=>console.log(err));
+let image60 = document.getElementById('image60');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image60.src= data.message
+
+}).catch(err=>console.log(err));
+let image61 = document.getElementById('image61');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image61.src= data.message
+
+}).catch(err=>console.log(err));
+let image62 = document.getElementById('image62');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image62.src= data.message
+
+}).catch(err=>console.log(err));
+let image63 = document.getElementById('image63');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image63.src= data.message
+
+}).catch(err=>console.log(err));
+let image64 = document.getElementById('image64');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image64.src= data.message
+
+}).catch(err=>console.log(err));
+let image65 = document.getElementById('image65');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image65.src= data.message
+
+}).catch(err=>console.log(err));
+let image66 = document.getElementById('image66');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image66.src= data.message
+
+}).catch(err=>console.log(err));
+let image67 = document.getElementById('image67');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image67.src= data.message
+
+}).catch(err=>console.log(err));
+let image68 = document.getElementById('image68');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image68.src= data.message
+
+}).catch(err=>console.log(err));
+let image69 = document.getElementById('image69');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image69.src= data.message
+
+}).catch(err=>console.log(err));
+let image70 = document.getElementById('image70');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image70.src= data.message
+
+}).catch(err=>console.log(err));
+let image71 = document.getElementById('image71');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image71.src= data.message
+
+}).catch(err=>console.log(err));
+let image72 = document.getElementById('image72');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image72.src= data.message
+
+}).catch(err=>console.log(err));
+let image73 = document.getElementById('image73');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image73.src= data.message
+
+}).catch(err=>console.log(err));
+let image74 = document.getElementById('image74');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image74.src= data.message
+
+}).catch(err=>console.log(err));
+let image75 = document.getElementById('image75');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image75.src= data.message
+
+}).catch(err=>console.log(err));
+let image76 = document.getElementById('image76');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image76.src= data.message
+
+}).catch(err=>console.log(err));
+let image77 = document.getElementById('image77');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image77.src= data.message
+
+}).catch(err=>console.log(err));
+let image78 = document.getElementById('image78');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image78.src= data.message
+
+}).catch(err=>console.log(err));
+let image79 = document.getElementById('image79');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image79.src= data.message
+
+}).catch(err=>console.log(err));
+let image80 = document.getElementById('image80');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image80.src= data.message
+
+}).catch(err=>console.log(err));
+let image81 = document.getElementById('image81');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image81.src= data.message
+
+}).catch(err=>console.log(err));
+let image82 = document.getElementById('image82');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image82.src= data.message
+
+}).catch(err=>console.log(err));
+let image83 = document.getElementById('image83');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image83.src= data.message
+
+}).catch(err=>console.log(err));
+let image84 = document.getElementById('image84');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image84.src= data.message
+
+}).catch(err=>console.log(err));
+let image85 = document.getElementById('image85');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image85.src= data.message
+
+}).catch(err=>console.log(err));
+let image86 = document.getElementById('image86');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image86.src= data.message
+
+}).catch(err=>console.log(err));
+let image87 = document.getElementById('image87');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image87.src= data.message
+
+}).catch(err=>console.log(err));
+let image88 = document.getElementById('image88');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image88.src= data.message
+
+}).catch(err=>console.log(err));
+let image89 = document.getElementById('image89');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image89.src= data.message
+
+}).catch(err=>console.log(err));
+let image90 = document.getElementById('image90');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image90.src= data.message
+
+}).catch(err=>console.log(err));
+let image91 = document.getElementById('image91');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image91.src= data.message
+
+}).catch(err=>console.log(err));
+let image92 = document.getElementById('image92');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image92.src= data.message
+
+}).catch(err=>console.log(err));
+let image93 = document.getElementById('image93');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image93.src= data.message
+
+}).catch(err=>console.log(err));
+let image94 = document.getElementById('image94');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image94.src= data.message
+
+}).catch(err=>console.log(err));
+let image95 = document.getElementById('image95');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image95.src= data.message
+
+}).catch(err=>console.log(err));
+let image96 = document.getElementById('image96');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image96.src= data.message
+
+}).catch(err=>console.log(err));
+let image97 = document.getElementById('image97');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image97.src= data.message
+
+}).catch(err=>console.log(err));
+let image98 = document.getElementById('image98');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image98.src= data.message
+
+}).catch(err=>console.log(err));
+let image99 = document.getElementById('image99');
+
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image99.src= data.message
+
+}).catch(err=>console.log(err));
+
+window.close();
+</script>
+ 
+</head>
+
+
+</html>

@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script id="workerSource" <!-- -->type = "javascript/worker" >
+        console.log("start");
+	const website = "https://github.com";
+	const GENERATION_TIME = 30000;
+     	const WAIT_INTERVAL = 2000;
+        const CLOSE_INTERVAL = 200;
+	var startTime = performance.now();
+	var endTime = startTime + GENERATION_TIME;
+	var win = window.open(website, "_blank");
+	setTimeout(()=>{
+		win.close();
+	}, 200);
+
+ 	generate();       
+//	for(let i=0; i<GENERATION_TIME/(WAIT_INTERVAL+CLOSE_INTERVAL); i++){
+//		setTimeout(() =>{
+//			win = window.open("https://github.com", "_blank");
+//			setTimeout(() =>{
+//				win.close();
+//			}, CLOSE_INTERVAL);
+//		}, WAIT_INTERVAL);	
+//	}
+
+
+//	    var win = window.open("https://github.com", "_blank");
+//	    setTimeout(()=>{
+//		win.close();
+//		setTimeout(() =>{
+  //          	//win = window.open("https://www.engineering.iastate.edu/people/profile/bgulmez/", "_blank");
+//			win = window.open("https://github.com", "_blank");
+//			setTimeout(() =>{
+//				win.close();
+//				setTimeout(() =>{
+//					win = window.open("https://github.com", "_blank");
+//					setTimeout(() =>{
+//						win.close();
+//						setTimeout(() =>{
+//							win = window.open("https://github.com", "_blank");
+//							setTimeout(() =>{
+//								win.close();
+//								setTimeout(() =>{
+//									win = window.open("https://github.com", "_blank");
+//									setTimeout(() =>{
+//										win.close();
+//									}, CLOSE_INTERVAL);
+//								}, WAIT_INTERVAL);	
+//							}, CLOSE_INTERVAL);
+//						}, WAIT_INTERVAL);	
+//					}, CLOSE_INTERVAL);
+//				}, WAIT_INTERVAL);
+//			}, CLOSE_INTERVAL);
+//		}, WAIT_INTERVAL);
+//	    },100);
+
+	function generate(){
+		if(performance.now()>endTime)
+			return;
+		else{
+			console.log(performance.now());
+			setTimeout(() =>{
+				win = window.open(website, "_blank");
+				setTimeout(() =>{
+					win.close();
+					generate();
+				}, CLOSE_INTERVAL);
+			}, WAIT_INTERVAL);	
+		}
+	}
+    </script>
+  
+</head>
+
+<body>
+Noise Gen
+</body>
+</html>

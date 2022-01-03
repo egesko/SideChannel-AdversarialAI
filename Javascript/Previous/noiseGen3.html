@@ -1,0 +1,129 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <a href="https://docs.google.com/uc?id=0B0jH18Lft7ypSmRjdWg1c082Y2M" download id="download" hidden></a>
+    <body>
+    Noise Gen
+    <image id = "image0">
+    <image id = "image1">
+    <image id = "image2">
+    <image id = "image3">
+    <image id = "image4">
+    <image id = "image5">
+    <image id = "image6">
+    <image id = "image7">
+    <image id = "image8">
+    <image id = "image9">    
+    </body>
+    <script id="workerSource" <!-- -->type = "javascript/worker" >
+            // worker constants
+            0; // otherwise VSCode complains...
+        console.log("start");
+        const MEASUREMENT_TIME_IN_MS = 30000;
+        const SAMPLING_PERIOD_IN_MS = 5; 
+
+        const ARRAY_SIZE = 1000;
+        
+        var measurement_index, busySpins = 0;
+        var nextMeasurementStartTime = performance.now(), finishTime = performance.now(), currentTime;
+        
+        finishTime += MEASUREMENT_TIME_IN_MS;
+        currentTime = performance.now();
+        /*function noise(){
+            document.getElementById('download').click();
+            //setTimeout(window.stop(),1000);
+        }
+        //document.getElementById('download').click();
+        var open = window.open('https://docs.google.com/uc?id=0B0jH18Lft7ypSmRjdWg1c082Y2M');
+      
+      setTimeout(open.close(),10000);*/
+      function reqListener () {
+  console.log(this.responseText);
+}
+
+let image0 = document.getElementById('image0');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image0.src= data.message
+
+}).catch(err=>console.log(err));}
+let image1 = document.getElementById('image1');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image1.src= data.message
+
+}).catch(err=>console.log(err));}
+let image2 = document.getElementById('image2');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image2.src= data.message
+
+}).catch(err=>console.log(err));}
+let image3 = document.getElementById('image3');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image3.src= data.message
+
+}).catch(err=>console.log(err));}
+let image4 = document.getElementById('image4');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image4.src= data.message
+
+}).catch(err=>console.log(err));}
+let image5 = document.getElementById('image5');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image5.src= data.message
+
+}).catch(err=>console.log(err));}
+let image6 = document.getElementById('image6');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image6.src= data.message
+
+}).catch(err=>console.log(err));}
+let image7 = document.getElementById('image7');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image7.src= data.message
+
+}).catch(err=>console.log(err));}
+let image8 = document.getElementById('image8');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image8.src= data.message
+
+}).catch(err=>console.log(err));}
+let image9 = document.getElementById('image9');
+for(let i = 0; i <10; i++){
+fetch("https://dog.ceo/api/breeds/image/random").then(response => response.json())
+.then(data => {
+    console.log(data)
+    image9.src= data.message
+
+}).catch(err=>console.log(err));}
+</script>
+ 
+</head>
+
+
+</html>
