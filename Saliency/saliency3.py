@@ -32,6 +32,8 @@ print("tensorflow {}".format(tf.__version__))
 
 train_X = pd.read_csv('trainX.csv', header=None)
 train_Y = pd.read_csv('trainY.csv', header=None)
+trainY_numpy = train_Y.to_numpy()
+trainX_numpy = train_X.to_numpy()
 
 saved_model = load_model('/home/ege/SeniorDesign/sddec21-13/Tensorflow/TrainedModel/trainedModel.h5')
 #saved_model.summary()
@@ -101,30 +103,74 @@ def makeChangeSaliency(inputClass,scoreClass): #Saliency for making one class mo
     return (finalSaliency / numberOfSamplesPerClass)
 
 
+
+
+
+
 #saliencyFINAL = makeSaliency(True, 0) #TRUE=SINGLE FALSE=MULTIPLE
 
-saliencyFINAL = makeChangeSaliency(3,5) #TEST, DELETE LATER
+
+
+
+# artificialX = trainX_numpy[0::numberOfWebsites]
+# artificialY = trainY_numpy[0::numberOfWebsites]
+
+
+numberOfUpdates = 200
+websiteProbeAmnt = 9
+sourceWebsite = 8
+
+#resultsLabels = np.zeros(websiteProbeAmnt)
+results = np.zeros((websiteProbeAmnt,numberOfUpdates))
+# print(range(websiteProbeAmnt))
+# exit()
+
+for targetWebsite in range(websiteProbeAmnt):
+
+    print("Website: " + str(targetWebsite))
+
+    if(sourceWebsite != targetWebsite):
+        #print("Website: " + str(website))
+
+        saliencyFINAL = makeChangeSaliency(sourceWebsite,targetWebsite)
+        artificialX = trainX_numpy[sourceWebsite::numberOfWebsites]
+        artificialY = trainY_numpy[targetWebsite::numberOfWebsites]
+        
+        for x in range(numberOfUpdates):
+            print(x)
+
+            #Updating with gradients
+            for sample in range(numberOfSamplesPerClass):
+                    for col in range(6000):
+                        artificialX[sample][col] += saliencyFINAL[0][col]
+
+            #Evaluation and saving results
+            oneResult = saved_model.evaluate(artificialX,artificialY, batch_size=16, verbose=1)
+            print("Result index: " + str(targetWebsite))
+            #resultsLabels[targetWebsite] = targetWebsite
+            results[targetWebsite][x] = oneResult[1]
+
+
+
 
 #saliencyFINAL1 = makeSaliency(True, 1) #TRUE=SINGLE FALSE=MULTIPLE
-#saliencyFINAL = saliencyFINAL1 - saliencyFINAL0 
 
 #print(saliencyFINAL)
-saliencyFINAL.tofile('saliencyMAP.csv', sep = ',')
-
-
-# history = model.fit(train_X, train_Y,validation_split = 0.3, batch_size=16, epochs=20, verbose=1)
-# #model.evaluate(x_test,y_test, batch_size=64, verbose=2)
+#saliencyFINAL.tofile('saliencyMAP.csv', sep = ',')
 
 
 
 fig = plt.figure()
-plt.plot(saliencyFINAL[0])
-plt.yticks(np.arange(min(saliencyFINAL[0])-0.05, max(saliencyFINAL[0])+0.05,0.01))
+#plt.plot(results)
+for row in range(websiteProbeAmnt):
+    plt.plot(results[row],label = row)
+plt.legend()
+plt.yticks(np.arange(0, 1,0.1))
 plt.grid()
-plt.axhline(linewidth=1, color='r')
-plt.xlabel("Positions (5ms each)")
-plt.ylabel("Importance")
+#plt.axhline(linewidth=1, color='r')
+plt.xlabel("Gradient Update")
+plt.ylabel("Accuracy")
 
-fig.savefig('saliency0to1.png',dpi=200)
+fig.savefig('UpdateVSAccuracy.png',dpi=200)
 
 

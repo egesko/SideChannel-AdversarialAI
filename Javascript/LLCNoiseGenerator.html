@@ -20,7 +20,6 @@
 
 	function sleep(ms){
 		return new Promise(resolve => setTimeout(resolve, ms));
-		console.log('girdi');
 	}
 
 	async function main() 
@@ -34,7 +33,7 @@
 			PP = new PrimeProbe(CACHE_SETS, CACHE_WAYS);
 			PP.probeAllSets();
 			console.log(i);
-			await sleep(2);
+			await sleep(500);
 			
 		}
 	}
