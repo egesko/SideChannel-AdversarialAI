@@ -47,7 +47,26 @@
 		
 	}
 
-	main();
+    function test_sleep_for()
+    {
+
+        for(let n = 1000; n<10000000000000000; n = n*10)
+        {
+            before = performance.now()
+            sleep()
+            final = performance.now() - before
+
+            console.log(n + ": " + final)
+        }
+
+    }
+
+
+
+
+
+	//main();
+    test_sleep_for();
 
 	function PrimeProbe(sets, ways) {
             this.evictionArray = new Uint32Array(1024 * BYTES_PER_MB / Uint32Array.BYTES_PER_ELEMENT); //Why do we need array that big
