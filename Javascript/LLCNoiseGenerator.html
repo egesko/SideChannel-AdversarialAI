@@ -18,24 +18,33 @@
 
 	var exit = new Boolean(false);
 
+
 	function sleep(ms){
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 
-	async function main() 
-	{
+    function sleep_for(amt){
+        a = 0;
+        for (let i = 0; i<amt; i++)
+        {
+            a = a+1;
+        }
+    }
 
-		//PP = new PrimeProbe(CACHE_SETS, CACHE_WAYS);
+	async function main(){
+
+		
+            for (let i = 0; i < 100000; i++){
+                PP = new PrimeProbe(CACHE_SETS, CACHE_WAYS);
+                PP.probeAllSets();
+                console.log(i);
+                //sleep(100)
+                sleep_for(1000000);
+
+            }
 
 		// Sleep in loop
-		for (let i = 0; i < 100000; i++) 
-		{
-			PP = new PrimeProbe(CACHE_SETS, CACHE_WAYS);
-			PP.probeAllSets();
-			console.log(i);
-			await sleep(500);
-			
-		}
+		
 	}
 
 	main();
