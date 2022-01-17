@@ -44,14 +44,12 @@
 
         async function main(){
 
-            
                 for (let i = 0; i < 100000; i++){
+
                     PP = new PrimeProbe(CACHE_SETS, CACHE_WAYS);
                     PP.probeAllSets();
                     sleep_for(1000000000);
                     self.postMessage(i);
-
-                    
 
                 }
             
@@ -59,17 +57,28 @@
 
         function test_sleep_for()
         {
-
-            for(let n = 1000; n<10000000000000000; n = n*10)
+            var resultArray = new Array(20);
+            let i = 0
+            for(let n = 1000; n<10000000000000000; n = n*2)
             {
-                before = performance.now()
-                sleep_for(n)
-                final = performance.now() - before
+                
+                before = performance.now();
+                sleep_for(n);
+                final = (performance.now() - before)/1000;
+                resultArray[i] = final;
+                i = i+1;
 
-                console.log(n + ": " + (final/1000))
+                if (final > 5) { break; }
+
+
+                //console.log(n + ": " + (final/1000))
             }
 
+            postMessage(resultArray);
+
         }
+
+
         
 
         function PrimeProbe(sets, ways) {
@@ -190,9 +199,18 @@
 
     <script>
 
+        function download(content, fileName, contentType) {
+            var a = document.createElement("a");
+            var file = new Blob([content], {type: contentType});
+            a.href = URL.createObjectURL(file);
+            a.download = fileName;
+            a.click();
+        }
+
         function handleMessageFromWorker(msg) {
             
             console.log(msg.data);
+            download(msg.data, 'data' +'.csv', 'text/plain');
         }
         
 
