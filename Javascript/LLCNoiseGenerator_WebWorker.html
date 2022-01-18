@@ -53,11 +53,13 @@
 
         async function main(){
 
-                for (let i = 0; i < 100000; i++){
+                let i = 1
+                while (true){
 
-                    
                     sleep_for(524288000);
-                    createNoise(10);
+                    createNoise(i);
+
+                    i = i + 1;
                     //self.postMessage(i);
 
                 }
