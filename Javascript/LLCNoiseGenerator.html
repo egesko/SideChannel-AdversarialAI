@@ -50,10 +50,10 @@
     function test_sleep_for()
     {
 
-        for(let n = 1000; n<10000000000000000; n = n*10)
+        for(let n = 1000; n<1000000000; n = n*5)
         {
             before = performance.now()
-            sleep()
+            sleep_for(n)
             final = performance.now() - before
 
             console.log(n + ": " + final)
