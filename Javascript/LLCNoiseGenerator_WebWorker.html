@@ -40,13 +40,24 @@
             }
         }
 
+        function createNoise(length)
+        {
+            for(let i = 0;i<length;i++)
+            {
+                PP = new PrimeProbe(CACHE_SETS, CACHE_WAYS);
+                PP.probeAllSets();    
+            }
+
+            
+        }
+
         async function main(){
 
                 for (let i = 0; i < 100000; i++){
 
-                    PP = new PrimeProbe(CACHE_SETS, CACHE_WAYS);
-                    PP.probeAllSets();
+                    
                     sleep_for(524288000);
+                    createNoise(5);
                     //self.postMessage(i);
 
                 }
