@@ -23,12 +23,10 @@
 
         self.onmessage = function(e){
 
-            test_sleep_for();
-            //main();
+            //test_sleep_for();
+            main();
             
         }
-
-        //test_sleep_for();
 
         function sleep(ms){
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -48,8 +46,8 @@
 
                     PP = new PrimeProbe(CACHE_SETS, CACHE_WAYS);
                     PP.probeAllSets();
-                    sleep_for(1000000000);
-                    self.postMessage(i);
+                    sleep_for(524288000);
+                    //self.postMessage(i);
 
                 }
             
@@ -57,7 +55,9 @@
 
         function test_sleep_for()
         {
+
             var resultArray = new Array(20);
+            
             let i = 0
             for(let n = 1000; n<10000000000000000; n = n*2)
             {
@@ -70,8 +70,6 @@
 
                 if (final > 5) { break; }
 
-
-                //console.log(n + ": " + (final/1000))
             }
 
             postMessage(resultArray);
@@ -197,7 +195,7 @@
 
 
 
-    <script>
+    <script> //MAIN SCRIPT
 
         function download(content, fileName, contentType) {
             var a = document.createElement("a");
