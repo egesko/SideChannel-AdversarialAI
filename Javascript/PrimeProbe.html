@@ -256,13 +256,26 @@
             download(msg.data, 'ssdec21-13_' + startTime + '.csv', 'text/plain');
 
             openedWindow.close()
-            window.open("test2.html")
+            window.open("PrimeProbe.html")
             window.close()
 
             exit = Boolean(true);
         }
-        
+
+        function sleep_for(amt){
+            a = 0;
+            for (let i = 0; i<amt; i++)
+            {
+                a = a+1;
+            }
+        }
+
         openedWindow = window.open("https://www.google.com", "_blank")
+
+        sleep_for(1048576000);
+
+        
+
         var blob = new Blob([
             document.querySelector('#workerSource').textContent
         ], { type: "text/javascript" })
@@ -270,6 +283,7 @@
         myWorker.addEventListener('message', handleMessageFromWorker);
         console.log("Starting...")
         myWorker.postMessage(window.location.search.split("?"));
+        
 
         
     </script>
