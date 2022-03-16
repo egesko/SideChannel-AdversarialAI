@@ -15,23 +15,45 @@ physical_devices = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_memory_growth(physical_devices[0],True)
 
 
-train_X = pd.read_csv('DataSet/trainX.csv')
-train_Y = pd.read_csv('DataSet/trainY.csv')
+train_X = pd.read_csv('DataSet/trainX13.csv')
+train_Y = pd.read_csv('DataSet/trainY13.csv')
+
+trainY = train_Y.to_numpy()
+trainX = train_X.to_numpy()
+trainX = np.expand_dims(trainX,axis=2)
 
 
 dropoutLevel = 0.3
-numberOfWebsites = 6
+numberOfWebsites = 14
 def my_model_sddec():
 
     input_1 = keras.Input(shape = (6000,1))
     
-    conv1d_1 = layers.Conv1D(256,16,strides=3,padding='valid',activation='relu',use_bias=True,kernel_initializer='VarianceScaling',bias_initializer = 'Zeros')(input_1)#possibly update kernel_initializer
-    
-    max_pooling1d_1 = layers.MaxPooling1D(pool_size = 4,strides = 4, padding = 'same')(conv1d_1)
-    
-    conv1d_2 = layers.Conv1D(32,8,strides=3,padding='same',activation='relu',use_bias=True,kernel_initializer='VarianceScaling',bias_initializer = 'Zeros')(max_pooling1d_1)#possibly update kernel_initializer
 
+
+
+    conv1d_1 = layers.Conv1D(256,16,strides=3,padding='valid',activation='relu',use_bias=True,kernel_initializer='VarianceScaling',bias_initializer = 'Zeros')(input_1)#possibly update kernel_initializer
+    max_pooling1d_1 = layers.MaxPooling1D(pool_size = 4,strides = 4, padding = 'same')(conv1d_1)
+
+    conv1d_2 = layers.Conv1D(128,8,strides=3,padding='valid',activation='relu',use_bias=True,kernel_initializer='VarianceScaling',bias_initializer = 'Zeros')(max_pooling1d_1)#possibly update kernel_initializer
     max_pooling1d_2 = layers.MaxPooling1D(pool_size = 4,strides = 4, padding = 'same')(conv1d_2)
+
+    conv1d_3 = layers.Conv1D(32,8,strides=3,padding='same',activation='relu',use_bias=True,kernel_initializer='VarianceScaling',bias_initializer = 'Zeros')(max_pooling1d_2)#possibly update kernel_initializer
+    max_pooling1d_2 = layers.MaxPooling1D(pool_size = 4,strides = 4, padding = 'same')(conv1d_3)
+
+
+
+
+
+
+
+    # conv1d_1 = layers.Conv1D(256,16,strides=3,padding='valid',activation='relu',use_bias=True,kernel_initializer='VarianceScaling',bias_initializer = 'Zeros')(input_1)#possibly update kernel_initializer
+    
+    # max_pooling1d_1 = layers.MaxPooling1D(pool_size = 4,strides = 4, padding = 'same')(conv1d_1)
+    
+    # conv1d_2 = layers.Conv1D(32,8,strides=3,padding='same',activation='relu',use_bias=True,kernel_initializer='VarianceScaling',bias_initializer = 'Zeros')(max_pooling1d_1)#possibly update kernel_initializer
+
+    # max_pooling1d_2 = layers.MaxPooling1D(pool_size = 4,strides = 4, padding = 'same')(conv1d_2)
 
     #lstm_1 = layers.LSTM(32,activation='tanh',recurrent_activation='hard_sigmoid',use_bias=True,kernel_initializer='VarianceScaling',recurrent_initializer = 'orthogonal',bias_initializer='Zeros', return_sequences = True)(max_pooling1d_2) #Variance Scaling
 
@@ -58,7 +80,7 @@ model.compile(
 	metrics=["accuracy"]
 )
 
-history = model.fit(train_X, train_Y,validation_split = 0.3, batch_size=16, epochs=20, verbose=1)
+history = model.fit(trainX, trainY,validation_split = 0.3, batch_size=16, epochs=20, verbose=1)
 
 model.save('TrainedModel/trainedModel.h5',save_format='h5')
 
